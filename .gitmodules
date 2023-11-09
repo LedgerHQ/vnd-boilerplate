@@ -1,0 +1,4 @@
+[submodule "vanadium"]
+	path = vanadium
+	url = git@github.com:yogh333/vanadium.git
+	branch = feat/apple_aarch64_support
