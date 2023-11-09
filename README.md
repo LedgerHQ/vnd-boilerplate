@@ -1,2 +1,2 @@
-# app-boilerplate-vanadium
+# vnd-boilerplate
 Boilerplate app for Vanadium
