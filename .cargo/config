@@ -1,0 +1,33 @@
+[target.x86_64-unknown-linux-gnu]
+rustflags = [
+  "-L./c-sdk_build/native",
+  "-L./lib/native/",
+  "-lsdk",
+  "-lcxng",
+  "-lspeculos",
+  "-lcrypto",
+]
+
+[target.aarch64-unknown-linux-gnu]
+rustflags = [
+  "-L./c-sdk_build/native",
+  "-L./lib/native/",
+  "-lsdk",
+  "-lcxng",
+  "-lspeculos",
+  "-lcrypto",
+]
+
+[target.riscv32imc-unknown-none-elf]
+rustflags = [
+  "-l", "sdk", "-L", "./c-sdk_build/riscv",
+  # link against libc coming from the RISC-V container (/usr/local/riscv32-unknown-linux-gnu/lib/libc.a)
+  "-l", "c", "-L", "./lib/risc-v/",
+
+  # The VM expects ELF binaries with 2 segments (rx and rw). Don't put
+  # read-only non-executable sections in their own segment.
+  "-Clink-arg=--no-rosegment",
+]
+
+[build]
+target = "riscv32imc-unknown-none-elf"
